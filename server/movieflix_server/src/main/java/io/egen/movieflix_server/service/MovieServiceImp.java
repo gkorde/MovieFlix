@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.egen.movieflix_server.entity.Movie;
+import io.egen.movieflix_server.exception.MovieAlreadyExistsException;
+import io.egen.movieflix_server.exception.MovieNotFoundException;
 import io.egen.movieflix_server.repository.MovieRepository;
 
 @Service
@@ -51,7 +53,12 @@ public class MovieServiceImp implements MovieService {
 	public Movie create(Movie movie) {
 		List<Movie> existing = repository.findByTitle(movie.getTitle());
 		if (existing != null)	{
-			//throw
+			for (Movie temp : existing)	{
+				if (temp.getTitle().equals(movie.getTitle()))	{
+					throw new MovieAlreadyExistsException(movie.getTitle() + "already exists in the database");
+				}
+					
+			}
 		}
 		return repository.create(movie);
 	}
@@ -61,7 +68,7 @@ public class MovieServiceImp implements MovieService {
 	public Movie update(String movieID) {
 		Movie existing = repository.findOne(movieID);
 		if (existing == null){
-			//throw
+			throw new MovieNotFoundException("Could not find any movie with the id:" +movieID);
 		}
 		return repository.update(existing);
 	}
@@ -71,7 +78,7 @@ public class MovieServiceImp implements MovieService {
 	public void delete(String movieID) {
 		Movie existing = repository.findOne(movieID);
 		if (existing == null)	{
-			//throw
+			throw new MovieNotFoundException("Could not find any movie with the id:" +movieID);
 		}
 		repository.delete(existing);
 	}
