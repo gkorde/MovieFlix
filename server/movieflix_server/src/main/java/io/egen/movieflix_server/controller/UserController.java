@@ -3,6 +3,7 @@ package io.egen.movieflix_server.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ import io.egen.movieflix_server.service.UserService;
 @RequestMapping(path="users")
 public class UserController {
 	
+	@Autowired
 	UserService service;
 	
 	@RequestMapping(method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
