@@ -6,6 +6,7 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import io.egen.movieflix_server.entity.User;
 import io.egen.movieflix_server.exception.EntityAlreadyExistsException;
@@ -33,6 +34,7 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public User create(User usr) {
 		User existing = repository.findByEmail(usr.getEmail());
 		if (existing != null)	{
@@ -43,6 +45,7 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public User update(String id, User usr) {
 		User existing = repository.findOne(id);
 		if (existing == null)	{
@@ -53,6 +56,7 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public void delete(String id) {
 		User existing = repository.findOne(id);
 		if (existing == null)	{
