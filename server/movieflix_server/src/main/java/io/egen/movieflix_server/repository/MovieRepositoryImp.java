@@ -6,8 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.stereotype.Repository;
+
 import io.egen.movieflix_server.entity.Movie;
 
+@Repository
 public class MovieRepositoryImp implements MovieRepository {
 	
 	@PersistenceContext
