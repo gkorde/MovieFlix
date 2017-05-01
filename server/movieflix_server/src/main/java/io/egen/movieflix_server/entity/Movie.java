@@ -35,10 +35,7 @@ public class Movie {
 	private float imdbRating;
 	private int imdbVotes;
 	private int metaScore;
-	
-//	@ManyToOne
-//	private Director director;
-	
+
 	public String getId() {
 		return id;
 	}
@@ -143,11 +140,4 @@ public class Movie {
 		this.metaScore = metaScore;
 	}
 
-//	public Director getDirector() {
-//		return director;
-//	}
-//
-//	public void setDirector(Director director) {
-//		this.director = director;
-//	}
 }
