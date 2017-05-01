@@ -31,22 +31,22 @@ public class MovieController {
 		return service.findOne(movieID);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, path = "{Year}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(method = RequestMethod.GET, path = "sort/{Year}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Movie> findByYear(@PathVariable("Year") int year)	{
 		return service.findByYear(year);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, path = "{title}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(method = RequestMethod.GET, path = "title/{title}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Movie> findByTitle(@PathVariable("title") String name)	{
 		return service.findByTitle(name);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, path = "{genre}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(method = RequestMethod.GET, path = "genre/{genre}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Movie> findByGenre(@PathVariable("genre") String genre)	{
 		return service.findByGenre(genre);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, path = "{IMDBRating}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(method = RequestMethod.GET, path = "IMDBRating/{IMDBRating}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Movie> findByIMDBRating(@PathVariable("IMDBRating") float rating)	{
 		return service.findByIMDBRating(rating);
 	}
@@ -56,7 +56,7 @@ public class MovieController {
 		return service.create(movie);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, path = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(method = RequestMethod.PUT, path = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Movie update(@PathVariable("id") String movieID)	{
 		return service.update(movieID);
 	}
